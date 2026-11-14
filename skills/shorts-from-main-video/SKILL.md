@@ -50,6 +50,10 @@ Share it BEFORE they record. The footage quality decides the edit quality. Short
 2. Transcribe: `python scripts/transcribe.py fixed.mp4 work/` -> prints numbered lines `L0, L1, ...` with timestamps and writes `work/tr.json`.
 3. Read the transcript. Fix names the model spelled wrong via `fix_words` in the config (e.g. `"Kubernets": "Kubernetes"`).
 
+## 2b. Hook-first rule (non-negotiable)
+The first 1-3 seconds must contain the hook, both spoken and on screen (title text from frame 0). When clipping, MOVE the hook line (or the most surprising line) to the start; use a `ranges` splice with the hook first and the context after it. A Short that starts with context is a failed Short. After rendering, look at frames 0, 15 and 45 (0 s, 0.5 s, 1.5 s): the hook text and a moving visual must already be there.
+Synthetic/known script? Do not use Whisper text for captions: use `scripts/align_script.py` (script words + Whisper timing, prints mismatches). Never reuse a music track across videos.
+
 ## 3. Pick the story of each Short (20-22 s each)
 
 Each Short = 3 parts, ~6-8 s each, built from transcript lines:

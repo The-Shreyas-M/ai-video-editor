@@ -1,10 +1,9 @@
 // usage: node render.mjs cfg.json   -> writes frames_<name>/%05d.jpg then you encode with ffmpeg
 import { createRequire } from 'module';
-import os from 'os';
 import fs from 'fs';
 import path from 'path';
 import { pathToFileURL } from 'url';
-const require = createRequire(path.join(os.homedir(), '.claude/tools/claude-animation-skills/kit/'));
+const require = createRequire('C:/Users/shrey_itz95ac/.claude/tools/claude-animation-skills/kit/');
 const { chromium } = require('playwright');
 const cfg = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 const frames = path.resolve(cfg.frames);

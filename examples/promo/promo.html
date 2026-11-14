@@ -1,166 +1,193 @@
-<!doctype html><html><head><meta charset="utf-8"><title>promo</title>
+<!doctype html><html><head><meta charset="utf-8"><title>promo2</title>
 <style>
 @font-face{font-family:Mont;src:url("assets/Montserrat-ExtraBold.ttf");font-weight:800}
-:root{--bg:#07080b;--fg:#f2f4f7;--mut:#8b93a1;--acc:#ffd400;--ok:#34d399;--card:#12151c;--line:#242a36}
+:root{--fg:#f4f6fa;--mut:#9aa3b5;--a1:#ffd400;--a2:#ff7a18;--ok:#3ee6a0;--glass:#ffffff12;--line:#ffffff24}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Mont,Arial Black,sans-serif;color:var(--fg)}
-.stage{position:absolute;inset:0;background:radial-gradient(120% 90% at 20% 0%,#161b27 0%,#07080b 60%);overflow:hidden}
-.stage:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:6vmin 6vmin;opacity:.5}
-.scene{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;gap:3vmin;padding:6vmin 7vmin 24vmin}
-.v .scene{padding:8vmin 6vmin 40vmin}
-.cam{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3vmin;width:100%}
+html,body{width:100%;height:100%;overflow:hidden;font-family:Mont,Arial Black,sans-serif;color:var(--fg);background:#06070a}
+#bg{position:absolute;inset:0}
+.orb{position:absolute;border-radius:50%;filter:blur(9vmin);opacity:.55;width:60vmin;height:60vmin}
+#grain{position:absolute;inset:0;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+.scene{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:6vmin 7vmin 20vmin}
+.v .scene{padding:21vmin 5vmin 50vmin}
+.cam{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3.2vmin;width:100%;height:100%}
+.row{display:flex;align-items:center;justify-content:center;gap:5vmin;width:100%}
+.v .row{flex-direction:column;gap:3vmin}
 .in{opacity:0}
-h1,h2{line-height:1.05;text-align:center;letter-spacing:-.01em;max-width:94%}
-.big{font-size:9.2vmin;text-transform:uppercase}.v .big{font-size:8.4vmin}
-.med{font-size:5.6vmin;text-transform:uppercase}.v .med{font-size:5.4vmin}
-.acc{color:var(--acc)}.ok{color:var(--ok)}.mut{color:var(--mut)}
-.pill{background:var(--acc);color:#000;border-radius:99px;padding:1.4vmin 3.4vmin;font-size:3.2vmin;text-transform:uppercase}
-.term{background:#0c0f15;border:1px solid var(--line);border-radius:2vmin;padding:3vmin;width:min(86vmin,90%);font-family:Consolas,Menlo,monospace;font-size:3.6vmin;line-height:1.6;color:#d6dae1;white-space:pre-wrap;min-height:14vmin;box-shadow:0 3vmin 8vmin #000a}
-.v .term{width:94%;font-size:3.7vmin}
-.term b{color:var(--acc);font-weight:400}.term i{color:var(--ok);font-style:normal}
-.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:2.4vmin;width:min(110vmin,92%)}
-.v .cards{grid-template-columns:1fr;width:90%}
-.card{background:var(--card);border:1px solid var(--line);border-radius:2vmin;padding:3vmin;font-size:4vmin;text-transform:uppercase;display:flex;flex-direction:column;gap:1vmin}
-.card small{font-family:Arial,sans-serif;text-transform:none;color:var(--mut);font-size:2.8vmin;font-weight:400}
-.flow{display:flex;flex-wrap:wrap;gap:1.6vmin;justify-content:center;align-items:center;width:min(120vmin,94%)}
-.node{background:var(--card);border:1px solid var(--line);border-radius:1.6vmin;padding:2vmin 2.8vmin;font-size:3.5vmin;text-transform:uppercase}
-.node.on{border-color:var(--acc);color:var(--acc)}
-.arrow{color:var(--mut);font-size:3vmin}
-.phone{width:22vmin;height:39vmin;border-radius:3vmin;border:.8vmin solid #2c3342;overflow:hidden;background:#000;position:relative;box-shadow:0 2vmin 6vmin #000a}
-.v .phone{width:30vmin;height:53vmin}
-.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
-.tree{font-family:Consolas,Menlo,monospace;font-size:3.6vmin;line-height:1.7;background:#0c0f15;border:1px solid var(--line);border-radius:2vmin;padding:3vmin 4vmin;width:min(100vmin,92%);white-space:pre}
-.v .tree{font-size:3.3vmin;width:96%}
-.tree em{color:var(--mut);font-style:normal;font-family:Arial,sans-serif;font-size:2.4vmin}
-.row{display:flex;gap:4vmin;align-items:center;justify-content:center;flex-wrap:wrap}
-.csv{font-family:Consolas,Menlo,monospace;font-size:3.1vmin;background:#0c0f15;border:1px solid var(--line);border-radius:2vmin;padding:2.4vmin 3vmin;width:min(110vmin,94%);line-height:1.55}
-.csv .r{display:flex;justify-content:space-between;gap:2vmin;opacity:0}
-.csv .h{color:var(--acc)}
-.cap{position:absolute;left:5vmin;right:5vmin;bottom:9vmin;text-align:center;font-size:6.2vmin;text-transform:uppercase;text-shadow:0 0 1.2vmin #000,0 .5vmin 0 #000,0 -.5vmin 0 #000,.5vmin 0 0 #000,-.5vmin 0 0 #000;z-index:5;line-height:1.1}
-.v .cap{bottom:19vmin;font-size:7.4vmin}
-.cap span{display:inline-block;margin:0 .9vmin}.cap span.on{color:var(--acc);transform:scale(1.1)}
-.prog{position:absolute;left:0;bottom:0;height:.9vmin;background:var(--acc);z-index:6}
-.badge{position:absolute;top:3.4vmin;right:3.4vmin;background:#000a;border:1px solid var(--acc);color:var(--acc);padding:1vmin 2vmin;border-radius:99px;font-size:2.2vmin;z-index:6;text-transform:uppercase}
-.url{font-family:Consolas,monospace;font-size:4vmin;color:var(--acc);background:#0c0f15;border:2px solid var(--acc);padding:2vmin 3.2vmin;border-radius:1.6vmin;text-align:center;word-break:break-all}
-.v .url{font-size:3.4vmin}
+.hook{font-size:11vmin;line-height:1;text-transform:uppercase;text-align:center;letter-spacing:-.02em;max-width:96%}
+.v .hook{font-size:11.5vmin}
+.grad{background:linear-gradient(100deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.h2{font-size:6.4vmin;line-height:1.05;text-transform:uppercase;text-align:center;max-width:94%}
+.v .h2{font-size:7vmin}
+.sub{font-family:Arial,sans-serif;font-weight:700;color:var(--mut);font-size:3.2vmin;text-align:center}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:2.6vmin;backdrop-filter:blur(2vmin);box-shadow:0 3vmin 9vmin #0008}
+.chip{display:inline-block;padding:1.5vmin 3vmin;border-radius:99px;font-size:3.1vmin;text-transform:uppercase;background:var(--glass);border:1px solid var(--line)}
+.chip.on{background:linear-gradient(100deg,var(--a1),var(--a2));color:#111;border-color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:1.6vmin;justify-content:center;max-width:94%}
+.v .chip{font-size:3.4vmin}
+.phone{position:relative;width:22vmin;height:39vmin;border-radius:3.6vmin;border:.7vmin solid #3a4256;overflow:hidden;background:#000;box-shadow:0 0 9vmin #ffb80040,0 4vmin 10vmin #000c}
+.phone.big{width:28vmin;height:50vmin}.v .phone{width:33vmin;height:59vmin}.v .phone.big{width:35vmin;height:62vmin}
+.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lab{font-size:2.8vmin;text-transform:uppercase;color:var(--mut);text-align:center;margin-top:1.4vmin}
+.term{font-family:Consolas,Menlo,monospace;font-size:3.5vmin;line-height:1.6;padding:3vmin 3.4vmin;width:min(94vmin,92%);white-space:pre-wrap;color:#dfe4ee;min-height:12vmin}
+.term b{color:var(--a1);font-weight:400}.term i{color:var(--ok);font-style:normal}
+.flow{display:flex;gap:1.6vmin;flex-wrap:wrap;justify-content:center;align-items:center;max-width:96%}
+.step{padding:1.9vmin 3vmin;border-radius:1.8vmin;font-size:3.2vmin;text-transform:uppercase;background:var(--glass);border:1px solid var(--line);color:var(--mut)}
+.step.on{color:#111;background:linear-gradient(100deg,var(--a1),var(--a2));border-color:transparent;transform:scale(1.07)}
+.step.done{color:var(--ok);border-color:var(--ok)}
+.csv{font-family:Consolas,Menlo,monospace;font-size:3vmin;padding:2.4vmin 3vmin;width:min(104vmin,94%);line-height:1.6}
+.csv .r{display:flex;justify-content:space-between;gap:2vmin;opacity:0}.csv .h{color:var(--a1)}
+.wave{display:flex;gap:.7vmin;align-items:center;height:12vmin}.wave i{display:block;width:1vmin;background:linear-gradient(var(--a1),var(--a2));border-radius:1vmin;height:2vmin}
+.count{font-size:20vmin;line-height:1;font-variant-numeric:tabular-nums}.v .count{font-size:24vmin}
+.url{font-family:Consolas,monospace;font-size:3.8vmin;color:var(--a1);padding:2vmin 3.2vmin;text-align:center;word-break:break-all;max-width:94%}
+.v .url{font-size:3.3vmin}
+.cap{position:absolute;left:5vmin;right:5vmin;bottom:9vmin;text-align:center;font-size:5.8vmin;text-transform:uppercase;z-index:5;line-height:1.15}
+.v .cap{bottom:41vmin;font-size:5.3vmin;white-space:nowrap}
+.cap .pill{display:inline-block;padding:1vmin 2.4vmin;border-radius:2vmin;background:#000a;backdrop-filter:blur(1vmin)}
+.cap span.w{display:inline-block;margin:0 .8vmin}.cap span.on{color:var(--a1);transform:scale(1.1)}
+.prog{position:absolute;left:0;bottom:0;height:.8vmin;background:linear-gradient(90deg,var(--a1),var(--a2));z-index:6}
+.badge{position:absolute;bottom:3.2vmin;left:3.4vmin;z-index:6;font-size:2.1vmin;text-transform:uppercase;padding:1vmin 2vmin;border-radius:99px;background:#0007;border:1px solid var(--a1);color:var(--a1)}
+.v .badge{top:6vmin;right:5vmin;bottom:auto;left:auto}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:7;pointer-events:none}
 </style></head><body>
-<div class="stage" id="stage">
+<div id="bg"><div class="orb" id="o1" style="background:#ff7a18"></div><div class="orb" id="o2" style="background:#3a6bff"></div><div class="orb" id="o3" style="background:#a24bff"></div></div>
+<div id="grain"></div>
 <div class="badge">Made completely by Claude</div>
 
-<!-- s1 hook -->
-<section class="scene" data-scene="s1"><div class="cam">
- <h1 class="big in" data-in=".02">Drop a video.</h1>
- <h1 class="big in acc" data-in=".16">Say what you want.</h1>
- <h1 class="big in" data-in=".32">Approve. Post.</h1>
- <div class="pill in" data-in=".62">Made completely by Claude</div>
- <div class="term in" data-in=".74" data-type="$ /ai-video" data-span=".2" style="min-height:0;width:auto;padding:2vmin 4vmin"></div>
+<!-- m1: examples first -->
+<section class="scene" data-scene="m1"><div class="cam">
+ <div class="hook in" data-in=".02">Edited by <span class="grad">AI.</span></div>
+ <div class="row" style="gap:3.4vmin">
+  <div class="in" data-in=".10" data-rot="-6"><div class="phone"><img data-seq="ex1" data-off="0"></div></div>
+  <div class="in" data-in=".16"><div class="phone big"><img data-seq="ex2" data-off="0"></div></div>
+  <div class="in" data-in=".22" data-rot="6"><div class="phone"><img data-seq="ex3" data-off="0"></div></div>
+ </div>
+ <div class="sub in" data-in=".45">I only dropped the files in a folder.</div>
 </div></section>
 
-<!-- s2 router -->
-<section class="scene" data-scene="s2"><div class="cam">
- <h2 class="med in" data-in=".02">One command: <span class="acc">/ai-video</span></h2>
- <div class="cards">
-  <div class="card in" data-in=".28">Shorts<small>from your own talking video</small></div>
-  <div class="card in" data-in=".42">Clips<small>from a long YouTube video</small></div>
-  <div class="card in" data-in=".56">Faceless reels<small>script or voiceover, no footage</small></div>
-  <div class="card in" data-in=".70">Launch video<small>for any website or project</small></div>
- </div></div></section>
-
-<!-- s3 install -->
-<section class="scene" data-scene="s3"><div class="cam">
- <h2 class="med in" data-in=".01">Install: <span class="acc">one command</span></h2>
- <div class="term in" data-in=".1" data-type="$ git clone github.com/The-Shreyas-M/ai-video-editor&#10;$ cd ai-video-editor&#10;$ python install.py --yes" data-span=".42"></div>
- <div class="term in" data-in=".55" data-type="✓ prerequisites   ✓ skills   ✓ engines&#10;✓ modules   ✓ workspace   ✓ doctor: all ok" data-span=".2" style="min-height:0;color:#34d399"></div>
- <div class="pill in" data-in=".82">or paste one prompt into Claude Code</div>
-</div></section>
-
-<!-- s4 workspace -->
-<section class="scene" data-scene="s4"><div class="cam">
- <h2 class="med in" data-in=".02">Your <span class="acc">workspace</span></h2>
- <div class="tree in" data-in=".1" data-type="AI Video Editor/&#10;├─ Raw Footage/     never touched&#10;├─ Exports/         finished videos&#10;├─ References/      brand-sheet.md&#10;├─ posting/         schedule + post&#10;└─ CLAUDE.md        the rules" data-span=".6"></div>
-</div></section>
-
-<!-- s5 edit -->
-<section class="scene" data-scene="s5"><div class="cam">
- <h2 class="med in" data-in=".02">A helper does the <span class="acc">heavy work</span></h2>
+<!-- m2 raw -> short -->
+<section class="scene" data-scene="m2"><div class="cam">
+ <div class="h2 in" data-in=".02">Phone recording <span class="grad">→ Short</span></div>
  <div class="row">
-  <div class="flow" style="width:min(70vmin,94%)">
-   <div class="node in" data-in=".12">Raw footage</div><div class="arrow in" data-in=".14">▶</div>
-   <div class="node in" data-in=".22">Transcribe</div><div class="arrow in" data-in=".24">▶</div>
-   <div class="node in" data-in=".34">Pick the hook</div><div class="arrow in" data-in=".36">▶</div>
-   <div class="node in" data-in=".46">Captions + b-roll</div><div class="arrow in" data-in=".48">▶</div>
-   <div class="node in" data-in=".58">Check frames</div><div class="arrow in" data-in=".60">▶</div>
-   <div class="node on in" data-in=".70">150-word report</div>
-  </div>
-  <div class="phone in" data-in=".1" data-imgs="1"><img src="assets/f1.jpg"><img src="assets/f2.jpg"><img src="assets/f3.jpg"><img src="assets/f4.jpg"></div>
+  <div class="in" data-in=".08"><div class="phone"><img data-seq="raw" data-off="0"></div><div class="lab">raw recording</div></div>
+  <div class="in" data-in=".30"><div class="phone big"><img data-seq="ex1" data-off="0"></div><div class="lab">edited by Claude</div></div>
+ </div>
+ <div class="chips"><span class="chip on in" data-in=".4">captions</span><span class="chip on in" data-in=".5">zooms</span><span class="chip on in" data-in=".6">b-roll</span><span class="chip on in" data-in=".7">music</span></div>
+</div></section>
+
+<!-- m3 long -> short -->
+<section class="scene" data-scene="m3"><div class="cam">
+ <div class="h2 in" data-in=".02">Long video in. <span class="grad">Short out.</span></div>
+ <div class="row">
+  <div class="phone big in" data-in=".08"><img data-seq="clip" data-off="0"></div>
+  <div class="chips" style="flex-direction:column;align-items:flex-start;max-width:46vmin"><span class="chip on in" data-in=".3">AI picks the hook</span><span class="chip on in" data-in=".5">face tracking</span><span class="chip on in" data-in=".7">every word captioned</span></div>
  </div>
 </div></section>
 
-<!-- s6 approve + post -->
-<section class="scene" data-scene="s6"><div class="cam">
- <h2 class="med in" data-in=".02">Approve first. <span class="acc">Then post.</span></h2>
- <div class="flow">
-  <div class="node in" data-in=".1">Watch</div><div class="arrow in" data-in=".12">▶</div>
-  <div class="node in" data-in=".2">Approve</div><div class="arrow in" data-in=".22">▶</div>
-  <div class="node on in" data-in=".3">Which accounts?</div><div class="arrow in" data-in=".32">▶</div>
-  <div class="node in" data-in=".4">Dry run</div><div class="arrow in" data-in=".42">▶</div>
-  <div class="node in" data-in=".5">Schedule</div>
- </div>
- <div class="csv in" data-in=".5"><div class="r h" data-in=".52"><span>file</span><span>account</span><span>when</span></div>
-  <div class="r" data-in=".58"><span>short-01.mp4</span><span>my-channel</span><span>Mon 07:30</span></div>
-  <div class="r" data-in=".63"><span>short-02.mp4</span><span>my-channel</span><span>Mon 19:30</span></div>
-  <div class="r" data-in=".68"><span>short-03.mp4</span><span>second-yt</span><span>Tue 07:30</span></div>
-  <div class="r" data-in=".73"><span>... 37 more rows</span><span></span><span>imported</span></div></div>
- <div class="pill in" data-in=".84">no duplicates · no wrong channel</div>
+<!-- m4 faceless -->
+<section class="scene" data-scene="m4"><div class="cam">
+ <div class="h2 in" data-in=".02">No camera. <span class="grad">No problem.</span></div>
+ <div class="flow"><div class="step in" data-in=".1" data-act=".2">Script</div><div class="step in" data-in=".18" data-act=".4">My cloned voice</div><div class="step in" data-in=".26" data-act=".6">Animation engine</div><div class="step in" data-in=".34" data-act=".8">This video</div></div>
+ <div class="glass term in" data-in=".4" data-type="“Example three. No camera at all. This video is just a script, a clone of my own voice, and an animation engine.”" data-span=".35" style="font-family:Mont,Arial;font-size:3.6vmin;min-height:0"></div>
+ <div class="wave in" data-in=".5" id="wave"></div>
 </div></section>
 
-<!-- s7 faceless -->
-<section class="scene" data-scene="s7"><div class="cam">
- <h2 class="med in" data-in=".02">No footage? <span class="acc">No problem.</span></h2>
- <div class="cards">
-  <div class="card in" data-in=".25">Animated explainers<small>stick figures, 3D cartoons, graphs, maps</small></div>
-  <div class="card in" data-in=".4">Launch videos<small>any project or website</small></div>
-  <div class="card in" data-in=".55">My own cloned voice<small>made locally, with my consent</small></div>
- </div></div></section>
+<!-- m5 router -->
+<section class="scene" data-scene="m5"><div class="cam">
+ <div class="hook in" data-in=".02" style="font-size:9vmin">One command: <span class="grad">/ai-video</span></div>
+ <div class="chips"><span class="chip on in" data-in=".25">Shorts</span><span class="chip on in" data-in=".35">Clips</span><span class="chip on in" data-in=".45">Faceless reels</span><span class="chip on in" data-in=".55">Launch videos</span><span class="chip on in" data-in=".65">Post &amp; schedule</span></div>
+ <div class="sub in" data-in=".75">free · open source · asks what you have and what you want</div>
+</div></section>
 
-<!-- s8 cta -->
-<section class="scene" data-scene="s8"><div class="cam">
- <h1 class="big in" data-in=".03">Open source. <span class="acc">MIT.</span></h1>
- <div class="url in" data-in=".25">github.com/The-Shreyas-M/ai-video-editor</div>
- <div class="pill in" data-in=".5">Made completely by Claude</div>
- <h2 class="med in mut" data-in=".65">Link in the description</h2>
+<!-- m6 install -->
+<section class="scene" data-scene="m6"><div class="cam">
+ <div class="h2 in" data-in=".02">Install: <span class="grad">one command</span></div>
+ <div class="glass term in" data-in=".1" data-type="$ git clone github.com/The-Shreyas-M/ai-video-editor&#10;$ cd ai-video-editor&#10;$ python install.py --yes" data-span=".45"></div>
+ <div class="glass term in" data-in=".6" data-type="✓ skills   ✓ engines   ✓ workspace   ✓ doctor ok" data-span=".15" style="min-height:0;color:#3ee6a0"></div>
+ <div class="chip on in" data-in=".85">or paste one prompt into Claude Code</div>
+</div></section>
+
+<!-- m7 approve + post -->
+<section class="scene" data-scene="m7"><div class="cam">
+ <div class="h2 in" data-in=".02">Approve first. <span class="grad">Then post.</span></div>
+ <div class="flow" id="gates"><div class="step in" data-in=".08" data-act=".15">Watch</div><div class="step in" data-in=".12" data-act=".3">Approve</div><div class="step in" data-in=".16" data-act=".45">Which account?</div><div class="step in" data-in=".20" data-act=".6">Dry run</div><div class="step in" data-in=".24" data-act=".75">Schedule</div></div>
+ <div class="glass csv in" data-in=".4"><div class="r h" data-in=".42"><span>file</span><span>account</span><span>when</span></div><div class="r" data-in=".48"><span>short-01.mp4</span><span>my-channel</span><span>Mon 07:30</span></div><div class="r" data-in=".54"><span>short-02.mp4</span><span>my-channel</span><span>Mon 19:30</span></div><div class="r" data-in=".60"><span>short-03.mp4</span><span>second-yt</span><span>Tue 07:30</span></div><div class="r" data-in=".66"><span>… 37 more rows</span><span></span><span>imported</span></div></div>
+ <div class="chips"><span class="chip on in" data-in=".78">no duplicates</span><span class="chip on in" data-in=".86">right channel only</span></div>
+</div></section>
+
+<!-- m8 cta -->
+<section class="scene" data-scene="m8"><div class="cam">
+ <div class="hook in" data-in=".03" style="font-size:8.6vmin">Made completely <span class="grad">by Claude.</span></div>
+ <div class="glass url in" data-in=".28">github.com/The-Shreyas-M/ai-video-editor</div>
+ <div class="chips"><span class="chip in" data-in=".5">free</span><span class="chip in" data-in=".56">open source</span><span class="chip in" data-in=".62">MIT</span></div>
+ <div class="sub in" data-in=".75">link in the description</div>
+</div></section>
+
+<!-- h1 -->
+<section class="scene" data-scene="h1"><div class="cam" style="gap:2.6vmin">
+ <div class="hook in" data-in=".0">An AI edited <span class="grad">this Short.</span></div>
+ <div class="phone big in" data-in=".005"><img data-seq="ex2" data-off="0"></div>
+ <div class="chips"><span class="chip on in" data-in=".35">cut</span><span class="chip on in" data-in=".42">captions</span><span class="chip on in" data-in=".5">zooms</span><span class="chip on in" data-in=".58">music</span></div>
+ <div class="glass term in" data-in=".68" data-type="$ /ai-video" data-span=".12" style="min-height:0;width:auto;padding:1.8vmin 4vmin"></div>
+</div></section>
+
+<!-- h2 -->
+<section class="scene" data-scene="h2"><div class="cam" style="gap:2.2vmin">
+ <div class="hook in" data-in=".0">Stop editing <span class="grad">by hand.</span></div>
+ <div class="phone in" data-in=".01" style="width:23vmin;height:41vmin"><img data-seq="ex3" data-off="0"></div>
+ <div class="flow" style="flex-direction:column;gap:1.4vmin"><div class="step in" data-in=".14" data-act=".2" style="font-size:3.3vmin">1 · Drop your video in a folder</div><div class="step in" data-in=".22" data-act=".4" style="font-size:3.3vmin">2 · Say what you want</div><div class="step in" data-in=".30" data-act=".6" style="font-size:3.3vmin">3 · Approve it</div><div class="step in" data-in=".38" data-act=".8" style="font-size:3.3vmin">4 · It schedules itself</div></div>
+</div></section>
+
+<!-- h3 -->
+<section class="scene" data-scene="h3"><div class="cam" style="gap:2.4vmin">
+ <div class="hook in" data-in=".0" style="font-size:9.6vmin"><span class="grad" id="cnt">0</span> videos.<br>One spreadsheet.</div>
+ <div class="glass csv in" data-in=".08" style="font-size:3.2vmin"><div class="r h" data-in=".1"><span>file</span><span>account</span><span>when</span></div><div class="r" data-in=".14"><span>clip-01.mp4</span><span>my-channel</span><span>Mon 07:30</span></div><div class="r" data-in=".18"><span>clip-02.mp4</span><span>my-channel</span><span>Mon 19:30</span></div><div class="r" data-in=".22"><span>clip-03.mp4</span><span>second-yt</span><span>Tue 07:30</span></div><div class="r" data-in=".26"><span>… 37 more</span><span></span><span>ok</span></div></div>
+ <div class="flow"><div class="step in" data-in=".55" data-act=".6">Dry run</div><div class="step in" data-in=".6" data-act=".72">Approved</div><div class="step in" data-in=".65" data-act=".85">Scheduled</div></div>
+ <div class="chips"><span class="chip on in" data-in=".8">zero duplicates</span></div>
 </div></section>
 
 <div class="cap" id="cap"></div>
+<div class="flash" id="flash"></div>
 <div class="prog" id="prog"></div>
-</div>
 <script>
 const C = window.CFG, V = C.fmt === 'v';
 document.body.classList.toggle('v', V);
-const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
-const ease = x => 1 - Math.pow(1 - x, 3);
-let starts = [], t0 = 0;
-C.scenes.forEach(s => { starts.push(t0); t0 += s.dur; });
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x)), ease = x => 1 - Math.pow(1 - x, 3);
+let starts = [], t0 = 0; C.scenes.forEach(s => { starts.push(t0); t0 += s.dur; });
 const els = {}; document.querySelectorAll('.scene').forEach(e => els[e.dataset.scene] = e);
-const groups = [];
-(() => { let cur = []; C.words.forEach(w => { cur.push(w); if (cur.length >= 3 || /[.,!?:]$/.test(w.w)) { groups.push(cur); cur = []; } }); if (cur.length) groups.push(cur); })();
-function setTime(t) {
+const groups = []; (() => { let cur = []; C.words.forEach(w => { cur.push(w); if (cur.length >= 3 || /[.,!?:]$/.test(w.w)) { groups.push(cur); cur = []; } }); if (cur.length) groups.push(cur); })();
+const wave = document.getElementById('wave'); if (wave) for (let i = 0; i < 44; i++) wave.appendChild(document.createElement('i'));
+const cache = {};
+function load(url) { if (!cache[url]) { const im = new Image(); im.src = url; cache[url] = im; } return cache[url]; }
+async function setTime(t) {
   document.getElementById('prog').style.width = (100 * t / C.total) + '%';
+  document.getElementById('bg').style.background = `linear-gradient(${120 + 30 * Math.sin(t / 9)}deg,hsl(${228 + 20 * Math.sin(t / 7)},50%,7%),hsl(${260 + 25 * Math.sin(t / 11)},45%,12%))`;
+  [['o1', 8, 12, 0.21], ['o2', 70, 60, 0.17], ['o3', 40, 85, 0.13]].forEach(([id, x, y, sp]) => { const o = document.getElementById(id); o.style.left = (x + 12 * Math.sin(t * sp + x)) + '%'; o.style.top = (y + 10 * Math.cos(t * sp * 1.3 + y)) + '%'; });
   let idx = starts.findIndex((s, i) => t >= s && t < s + C.scenes[i].dur); if (idx < 0) idx = C.scenes.length - 1;
   C.scenes.forEach((s, i) => { if (els[s.id]) els[s.id].style.display = i === idx ? 'flex' : 'none'; });
-  const sc = C.scenes[idx], el = els[sc.id], lt = t - starts[idx], f = lt / sc.dur;
+  const sc = C.scenes[idx], el = els[sc.id], lt = t - starts[idx], f = lt / sc.dur, jobs = [];
+  const fl = document.getElementById('flash'); fl.style.opacity = lt < 0.12 && idx > 0 ? 0.35 * (1 - lt / 0.12) : 0;
   if (el) {
-    el.style.opacity = clamp(lt / 0.25) * clamp((sc.dur - lt) / 0.25 + 0.0001);
-    el.querySelector('.cam').style.transform = `scale(${1 + 0.035 * f})`;
+    el.style.opacity = clamp(lt / 0.2) * clamp((sc.dur - lt) / 0.25 + 0.0001);
+    el.querySelector('.cam').style.transform = `scale(${1.04 - 0.04 * ease(clamp(lt / 0.6)) + 0.03 * f})`;
     el.querySelectorAll('[data-in]').forEach(n => {
-      const a = parseFloat(n.dataset.in), p = ease(clamp((f - a) / 0.07));
-      n.style.opacity = p; n.style.transform = `translateY(${(1 - p) * 2.4}vmin)`;
-      if (n.dataset.type) { const full = n.dataset.type, sp = parseFloat(n.dataset.span || .3); const k = clamp((f - a) / sp); n.textContent = full.slice(0, Math.floor(full.length * k)) + (k < 1 ? '▌' : ''); }
-      if (n.dataset.imgs) { const im = n.querySelectorAll('img'); const k = Math.min(im.length - 1, Math.floor(clamp((f - a) / 0.8) * im.length)); im.forEach((x, j) => x.style.opacity = j === k ? 1 : 0); }
+      const a = parseFloat(n.dataset.in), p = ease(clamp((f - a) / 0.06));
+      const rot = parseFloat(n.dataset.rot || 0) * p;
+      n.style.opacity = p; n.style.transform = `translateY(${(1 - p) * 3}vmin) scale(${0.94 + 0.06 * p}) rotate(${rot}deg)`;
+      if (n.dataset.type) { const full = n.dataset.type, k = clamp((f - a) / parseFloat(n.dataset.span || .3)); n.textContent = full.slice(0, Math.floor(full.length * k)) + (k < 1 ? '▌' : ''); }
     });
+    const act = [...el.querySelectorAll('[data-act]')];
+    act.forEach((n, i) => { const a = parseFloat(n.dataset.act), nx = act[i + 1] ? parseFloat(act[i + 1].dataset.act) : 2; n.classList.toggle('on', f >= a && f < nx); n.classList.toggle('done', f >= nx); });
+    el.querySelectorAll('img[data-seq]').forEach(im => {
+      const s = C.seq[im.dataset.seq], n = s.n, i = Math.min(n - 1, Math.max(0, Math.floor((lt + parseFloat(im.dataset.off || 0)) * s.fps) % n));
+      const u = s.base + String(i + 1).padStart(4, '0') + '.jpg', o = load(u); if (im.src !== o.src) im.src = o.src; jobs.push(o.decode().catch(() => {}));
+      for (let k = 1; k <= 3; k++) load(s.base + String(((i + k) % n) + 1).padStart(4, '0') + '.jpg');
+    });
+    if (sc.id === 'h3') { const k = ease(clamp((f - 0.0) / 0.3)); document.getElementById('cnt').textContent = Math.round(40 * k); }
+    if (sc.id === 'm4') { document.querySelectorAll('#wave i').forEach((b, i) => { b.style.height = (2 + 10 * Math.abs(Math.sin(t * 7 + i * 0.7) * Math.sin(t * 2.3 + i * 0.2))) + 'vmin'; }); }
   }
-  const g = groups.find(g => t >= g[0].s - 0.05 && t < g[g.length - 1].e + 0.35 && !(groups[groups.indexOf(g) + 1] && t >= groups[groups.indexOf(g) + 1][0].s - 0.05));
-  document.getElementById('cap').innerHTML = g ? g.map(w => `<span class="${t >= w.s && t < w.e + 0.05 ? 'on' : ''}">${w.w.replace(/[.,!?:]/g, '')}</span>`).join(' ') : '';
+  const g = groups.find((g, gi) => t >= g[0].s - 0.05 && t < Math.min(g[g.length - 1].e + 0.35, groups[gi + 1] ? groups[gi + 1][0].s - 0.05 : 1e9));
+  document.getElementById('cap').innerHTML = g ? '<span class="pill">' + g.map(w => `<span class="w ${t >= w.s && t < w.e + 0.05 ? 'on' : ''}">${w.w.replace(/[.,!?:]+$/, '')}</span>`).join(' ') + '</span>' : '';
+  await Promise.all(jobs);
 }
 window.setTime = setTime; setTime(0);
 </script></body></html>

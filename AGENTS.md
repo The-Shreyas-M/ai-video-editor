@@ -27,6 +27,7 @@ Installed into the user's machine: `~/.claude/skills/<skill>`, `~/.claude/tools/
 ## Invariants (do not weaken)
 - Never modify `Raw Footage/`. Never post without explicit approval AFTER the human saw the final files and chose the accounts. Always dry-run first.
 - Posting safety: approved-only, SQLite ledger with unique key and claim-before-upload, adopt-existing-by-title, halt on ambiguous errors, per-account `expected_channel`, lock file.
+- Creative minimums: hook in the first 1-3 s, lead with real examples, captions from the script for synthetic audio (`align_script.py`), a different music track per video, captions out of platform UI zones. Details: `skills/ai-video/SKILL.md`.
 - Credentials never enter git or chat. Check `.gitignore` before any commit in a workspace.
 - Do not invent facts, testimonials or statistics in generated videos; disclose AI-generated/synthetic content; use only music that is free for commercial use and note the source.
 - Third-party code keeps its licence notices (`THIRD-PARTY-NOTICES.md`).

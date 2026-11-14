@@ -1,13 +1,15 @@
-{"clips": {
-"s1": "What if you could drop a video in a folder, say what you want, and have an AI edit it, wait for your approval, and then schedule it for you? This whole video, and the tool behind it, was made completely by Claude.",
-"s2": "It's called the AI Video Editor. One command: slash ai dash video. It asks what you have and what you want, then picks the right tool. Shorts from your own talking video. Clips from a long YouTube video. Animated reels with no footage at all. Or a launch video for any website.",
-"s3": "Installing takes one command. Clone the repo, and run python install dot py with the yes flag. It checks Python, Node and ffmpeg, then installs the skills, the editing engines, and your workspace. Or just paste one prompt into Claude Code, and Claude installs everything for you.",
-"s4": "Your workspace has a Raw Footage folder that is never touched, an Exports folder for finished videos, a brand sheet for your style, and a posting module. The rules live in a single file, so any Claude chat that opens the folder follows them.",
-"s5": "Say: make three Shorts from my video. Claude does not do the heavy lifting in your chat. It hands the job to a helper session inside the workspace. That helper transcribes your voice, picks the hook, builds a split screen with b-roll, adds word by word captions, zooms, and music that ducks under your voice, then checks every frame. You get back a short report, not a wall of text. That is how token use stays low.",
-"s6": "Then you watch, and you approve. Only after that does Claude ask: which accounts, and when? Post to this channel, not that one. Forty clips to schedule? Fill in one CSV, import it, and they go out two a day. YouTube publishes them by itself, so your computer can be off. Every upload goes through a ledger, so nothing posts twice, and any unclear error stops the run.",
-"s7": "No footage? Give it a script or a voiceover, and it builds animated explainers. Need a promo? It can turn a project or a website into a launch video. This video is exactly that: the voice is my own cloned voice, and everything else was made by Claude.",
-"s8": "It's open source, M I T licensed, and it never posts without your say so. The link is in the description. Install it, try it, and tell me what you build. And remember: this video was made completely by Claude.",
-"a": "Install a complete AI video studio with one command. Clone the repo, run install dot py with yes. It sets up the Shorts maker, a clipping tool, and a posting scheduler. Then type slash ai dash video in Claude Code. Made completely by Claude. Link in the description.",
-"b": "Drop a video in a folder. Claude hands the job to a helper, transcribes it, picks the hook, adds captions, zooms and music, and checks every frame. You just watch, and say approved. Made completely by Claude. It's open source, link in the description.",
-"c": "Forty clips to schedule? Fill in one CSV, and import it. Claude asks which account, shows a dry run, and only posts after you say go. No duplicates, no wrong channel, and YouTube publishes for you. Made completely by Claude. Link in the description."
-}}
+{
+ "clips": {
+  "m1": "These three Shorts, and this whole video, were edited by an AI. I only dropped the files in a folder.",
+  "m2": "Example one. A phone recording of me talking. Claude cut it, added b-roll, captions, zooms and music. I never opened an editor.",
+  "m3": "Example two. A long video goes in, and a ready Short comes out. It finds the hook, tracks my face, and captions every word.",
+  "m4": "Example three. No camera at all. This video is just a script, a clone of my own voice, and an animation engine.",
+  "m5": "It's called the AI Video Editor, and it's free and open source. One command, slash ai dash video, asks what you have and what you want.",
+  "m6": "Installing takes one command. Clone the repo, and run install dot py with the yes flag. Or paste one prompt, and let Claude do it for you.",
+  "m7": "You approve every video before anything goes out. Then Claude asks which account, shows a dry run, and schedules it. Forty clips? One CSV. Nothing posts twice, and never to the wrong channel.",
+  "m8": "Everything here, the repo, the docs, and this video, was made completely by Claude. The narration is a clone of my own voice. The link is in the description.",
+  "h1": "An AI edited this Short. I never touched a timeline. I dropped one phone video in a folder. Claude cut it, captioned every word, added zooms and music, and checked every frame. One command: slash ai dash video. Free and open source. Link in the description.",
+  "h2": "Stop editing Shorts by hand. Drop your video in a folder, and say what you want. Claude edits it, you approve it, and it schedules itself. Free, open source, and made completely by Claude. Link in the description.",
+  "h3": "Forty videos. One spreadsheet. Zero duplicates. Fill in one CSV. Claude asks which account, shows a dry run, and only posts after you say go. YouTube publishes them for you. Free and open source. Link in the description."
+ }
+}
