@@ -1,0 +1,17 @@
+.env
+token*.json
+client_secrets.json
+accounts.json
+ig_*.json
+ledger/
+queue.json
+schedule.csv
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+output/*
+!output/.gitkeep
+Raw Footage/
+Exports/
+work/

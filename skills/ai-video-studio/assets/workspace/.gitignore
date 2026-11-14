@@ -1,0 +1,15 @@
+Raw Footage/
+Exports/
+work/
+Tools/.venv/
+posting/.env
+posting/token.json
+posting/client_secrets.json
+posting/ig_session.json
+posting/ledger/
+posting/queue.json
+__pycache__/
+posting/token*.json
+posting/ig_*.json
+posting/accounts.json
+posting/schedule.csv
