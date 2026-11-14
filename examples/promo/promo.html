@@ -1,0 +1,166 @@
+<!doctype html><html><head><meta charset="utf-8"><title>promo</title>
+<style>
+@font-face{font-family:Mont;src:url("assets/Montserrat-ExtraBold.ttf");font-weight:800}
+:root{--bg:#07080b;--fg:#f2f4f7;--mut:#8b93a1;--acc:#ffd400;--ok:#34d399;--card:#12151c;--line:#242a36}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Mont,Arial Black,sans-serif;color:var(--fg)}
+.stage{position:absolute;inset:0;background:radial-gradient(120% 90% at 20% 0%,#161b27 0%,#07080b 60%);overflow:hidden}
+.stage:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:6vmin 6vmin;opacity:.5}
+.scene{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;gap:3vmin;padding:6vmin 7vmin 24vmin}
+.v .scene{padding:8vmin 6vmin 40vmin}
+.cam{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3vmin;width:100%}
+.in{opacity:0}
+h1,h2{line-height:1.05;text-align:center;letter-spacing:-.01em;max-width:94%}
+.big{font-size:9.2vmin;text-transform:uppercase}.v .big{font-size:8.4vmin}
+.med{font-size:5.6vmin;text-transform:uppercase}.v .med{font-size:5.4vmin}
+.acc{color:var(--acc)}.ok{color:var(--ok)}.mut{color:var(--mut)}
+.pill{background:var(--acc);color:#000;border-radius:99px;padding:1.4vmin 3.4vmin;font-size:3.2vmin;text-transform:uppercase}
+.term{background:#0c0f15;border:1px solid var(--line);border-radius:2vmin;padding:3vmin;width:min(86vmin,90%);font-family:Consolas,Menlo,monospace;font-size:3.6vmin;line-height:1.6;color:#d6dae1;white-space:pre-wrap;min-height:14vmin;box-shadow:0 3vmin 8vmin #000a}
+.v .term{width:94%;font-size:3.7vmin}
+.term b{color:var(--acc);font-weight:400}.term i{color:var(--ok);font-style:normal}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:2.4vmin;width:min(110vmin,92%)}
+.v .cards{grid-template-columns:1fr;width:90%}
+.card{background:var(--card);border:1px solid var(--line);border-radius:2vmin;padding:3vmin;font-size:4vmin;text-transform:uppercase;display:flex;flex-direction:column;gap:1vmin}
+.card small{font-family:Arial,sans-serif;text-transform:none;color:var(--mut);font-size:2.8vmin;font-weight:400}
+.flow{display:flex;flex-wrap:wrap;gap:1.6vmin;justify-content:center;align-items:center;width:min(120vmin,94%)}
+.node{background:var(--card);border:1px solid var(--line);border-radius:1.6vmin;padding:2vmin 2.8vmin;font-size:3.5vmin;text-transform:uppercase}
+.node.on{border-color:var(--acc);color:var(--acc)}
+.arrow{color:var(--mut);font-size:3vmin}
+.phone{width:22vmin;height:39vmin;border-radius:3vmin;border:.8vmin solid #2c3342;overflow:hidden;background:#000;position:relative;box-shadow:0 2vmin 6vmin #000a}
+.v .phone{width:30vmin;height:53vmin}
+.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.tree{font-family:Consolas,Menlo,monospace;font-size:3.6vmin;line-height:1.7;background:#0c0f15;border:1px solid var(--line);border-radius:2vmin;padding:3vmin 4vmin;width:min(100vmin,92%);white-space:pre}
+.v .tree{font-size:3.3vmin;width:96%}
+.tree em{color:var(--mut);font-style:normal;font-family:Arial,sans-serif;font-size:2.4vmin}
+.row{display:flex;gap:4vmin;align-items:center;justify-content:center;flex-wrap:wrap}
+.csv{font-family:Consolas,Menlo,monospace;font-size:3.1vmin;background:#0c0f15;border:1px solid var(--line);border-radius:2vmin;padding:2.4vmin 3vmin;width:min(110vmin,94%);line-height:1.55}
+.csv .r{display:flex;justify-content:space-between;gap:2vmin;opacity:0}
+.csv .h{color:var(--acc)}
+.cap{position:absolute;left:5vmin;right:5vmin;bottom:9vmin;text-align:center;font-size:6.2vmin;text-transform:uppercase;text-shadow:0 0 1.2vmin #000,0 .5vmin 0 #000,0 -.5vmin 0 #000,.5vmin 0 0 #000,-.5vmin 0 0 #000;z-index:5;line-height:1.1}
+.v .cap{bottom:19vmin;font-size:7.4vmin}
+.cap span{display:inline-block;margin:0 .9vmin}.cap span.on{color:var(--acc);transform:scale(1.1)}
+.prog{position:absolute;left:0;bottom:0;height:.9vmin;background:var(--acc);z-index:6}
+.badge{position:absolute;top:3.4vmin;right:3.4vmin;background:#000a;border:1px solid var(--acc);color:var(--acc);padding:1vmin 2vmin;border-radius:99px;font-size:2.2vmin;z-index:6;text-transform:uppercase}
+.url{font-family:Consolas,monospace;font-size:4vmin;color:var(--acc);background:#0c0f15;border:2px solid var(--acc);padding:2vmin 3.2vmin;border-radius:1.6vmin;text-align:center;word-break:break-all}
+.v .url{font-size:3.4vmin}
+</style></head><body>
+<div class="stage" id="stage">
+<div class="badge">Made completely by Claude</div>
+
+<!-- s1 hook -->
+<section class="scene" data-scene="s1"><div class="cam">
+ <h1 class="big in" data-in=".02">Drop a video.</h1>
+ <h1 class="big in acc" data-in=".16">Say what you want.</h1>
+ <h1 class="big in" data-in=".32">Approve. Post.</h1>
+ <div class="pill in" data-in=".62">Made completely by Claude</div>
+ <div class="term in" data-in=".74" data-type="$ /ai-video" data-span=".2" style="min-height:0;width:auto;padding:2vmin 4vmin"></div>
+</div></section>
+
+<!-- s2 router -->
+<section class="scene" data-scene="s2"><div class="cam">
+ <h2 class="med in" data-in=".02">One command: <span class="acc">/ai-video</span></h2>
+ <div class="cards">
+  <div class="card in" data-in=".28">Shorts<small>from your own talking video</small></div>
+  <div class="card in" data-in=".42">Clips<small>from a long YouTube video</small></div>
+  <div class="card in" data-in=".56">Faceless reels<small>script or voiceover, no footage</small></div>
+  <div class="card in" data-in=".70">Launch video<small>for any website or project</small></div>
+ </div></div></section>
+
+<!-- s3 install -->
+<section class="scene" data-scene="s3"><div class="cam">
+ <h2 class="med in" data-in=".01">Install: <span class="acc">one command</span></h2>
+ <div class="term in" data-in=".1" data-type="$ git clone github.com/The-Shreyas-M/ai-video-editor&#10;$ cd ai-video-editor&#10;$ python install.py --yes" data-span=".42"></div>
+ <div class="term in" data-in=".55" data-type="✓ prerequisites   ✓ skills   ✓ engines&#10;✓ modules   ✓ workspace   ✓ doctor: all ok" data-span=".2" style="min-height:0;color:#34d399"></div>
+ <div class="pill in" data-in=".82">or paste one prompt into Claude Code</div>
+</div></section>
+
+<!-- s4 workspace -->
+<section class="scene" data-scene="s4"><div class="cam">
+ <h2 class="med in" data-in=".02">Your <span class="acc">workspace</span></h2>
+ <div class="tree in" data-in=".1" data-type="AI Video Editor/&#10;├─ Raw Footage/     never touched&#10;├─ Exports/         finished videos&#10;├─ References/      brand-sheet.md&#10;├─ posting/         schedule + post&#10;└─ CLAUDE.md        the rules" data-span=".6"></div>
+</div></section>
+
+<!-- s5 edit -->
+<section class="scene" data-scene="s5"><div class="cam">
+ <h2 class="med in" data-in=".02">A helper does the <span class="acc">heavy work</span></h2>
+ <div class="row">
+  <div class="flow" style="width:min(70vmin,94%)">
+   <div class="node in" data-in=".12">Raw footage</div><div class="arrow in" data-in=".14">▶</div>
+   <div class="node in" data-in=".22">Transcribe</div><div class="arrow in" data-in=".24">▶</div>
+   <div class="node in" data-in=".34">Pick the hook</div><div class="arrow in" data-in=".36">▶</div>
+   <div class="node in" data-in=".46">Captions + b-roll</div><div class="arrow in" data-in=".48">▶</div>
+   <div class="node in" data-in=".58">Check frames</div><div class="arrow in" data-in=".60">▶</div>
+   <div class="node on in" data-in=".70">150-word report</div>
+  </div>
+  <div class="phone in" data-in=".1" data-imgs="1"><img src="assets/f1.jpg"><img src="assets/f2.jpg"><img src="assets/f3.jpg"><img src="assets/f4.jpg"></div>
+ </div>
+</div></section>
+
+<!-- s6 approve + post -->
+<section class="scene" data-scene="s6"><div class="cam">
+ <h2 class="med in" data-in=".02">Approve first. <span class="acc">Then post.</span></h2>
+ <div class="flow">
+  <div class="node in" data-in=".1">Watch</div><div class="arrow in" data-in=".12">▶</div>
+  <div class="node in" data-in=".2">Approve</div><div class="arrow in" data-in=".22">▶</div>
+  <div class="node on in" data-in=".3">Which accounts?</div><div class="arrow in" data-in=".32">▶</div>
+  <div class="node in" data-in=".4">Dry run</div><div class="arrow in" data-in=".42">▶</div>
+  <div class="node in" data-in=".5">Schedule</div>
+ </div>
+ <div class="csv in" data-in=".5"><div class="r h" data-in=".52"><span>file</span><span>account</span><span>when</span></div>
+  <div class="r" data-in=".58"><span>short-01.mp4</span><span>my-channel</span><span>Mon 07:30</span></div>
+  <div class="r" data-in=".63"><span>short-02.mp4</span><span>my-channel</span><span>Mon 19:30</span></div>
+  <div class="r" data-in=".68"><span>short-03.mp4</span><span>second-yt</span><span>Tue 07:30</span></div>
+  <div class="r" data-in=".73"><span>... 37 more rows</span><span></span><span>imported</span></div></div>
+ <div class="pill in" data-in=".84">no duplicates · no wrong channel</div>
+</div></section>
+
+<!-- s7 faceless -->
+<section class="scene" data-scene="s7"><div class="cam">
+ <h2 class="med in" data-in=".02">No footage? <span class="acc">No problem.</span></h2>
+ <div class="cards">
+  <div class="card in" data-in=".25">Animated explainers<small>stick figures, 3D cartoons, graphs, maps</small></div>
+  <div class="card in" data-in=".4">Launch videos<small>any project or website</small></div>
+  <div class="card in" data-in=".55">My own cloned voice<small>made locally, with my consent</small></div>
+ </div></div></section>
+
+<!-- s8 cta -->
+<section class="scene" data-scene="s8"><div class="cam">
+ <h1 class="big in" data-in=".03">Open source. <span class="acc">MIT.</span></h1>
+ <div class="url in" data-in=".25">github.com/The-Shreyas-M/ai-video-editor</div>
+ <div class="pill in" data-in=".5">Made completely by Claude</div>
+ <h2 class="med in mut" data-in=".65">Link in the description</h2>
+</div></section>
+
+<div class="cap" id="cap"></div>
+<div class="prog" id="prog"></div>
+</div>
+<script>
+const C = window.CFG, V = C.fmt === 'v';
+document.body.classList.toggle('v', V);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = x => 1 - Math.pow(1 - x, 3);
+let starts = [], t0 = 0;
+C.scenes.forEach(s => { starts.push(t0); t0 += s.dur; });
+const els = {}; document.querySelectorAll('.scene').forEach(e => els[e.dataset.scene] = e);
+const groups = [];
+(() => { let cur = []; C.words.forEach(w => { cur.push(w); if (cur.length >= 3 || /[.,!?:]$/.test(w.w)) { groups.push(cur); cur = []; } }); if (cur.length) groups.push(cur); })();
+function setTime(t) {
+  document.getElementById('prog').style.width = (100 * t / C.total) + '%';
+  let idx = starts.findIndex((s, i) => t >= s && t < s + C.scenes[i].dur); if (idx < 0) idx = C.scenes.length - 1;
+  C.scenes.forEach((s, i) => { if (els[s.id]) els[s.id].style.display = i === idx ? 'flex' : 'none'; });
+  const sc = C.scenes[idx], el = els[sc.id], lt = t - starts[idx], f = lt / sc.dur;
+  if (el) {
+    el.style.opacity = clamp(lt / 0.25) * clamp((sc.dur - lt) / 0.25 + 0.0001);
+    el.querySelector('.cam').style.transform = `scale(${1 + 0.035 * f})`;
+    el.querySelectorAll('[data-in]').forEach(n => {
+      const a = parseFloat(n.dataset.in), p = ease(clamp((f - a) / 0.07));
+      n.style.opacity = p; n.style.transform = `translateY(${(1 - p) * 2.4}vmin)`;
+      if (n.dataset.type) { const full = n.dataset.type, sp = parseFloat(n.dataset.span || .3); const k = clamp((f - a) / sp); n.textContent = full.slice(0, Math.floor(full.length * k)) + (k < 1 ? '▌' : ''); }
+      if (n.dataset.imgs) { const im = n.querySelectorAll('img'); const k = Math.min(im.length - 1, Math.floor(clamp((f - a) / 0.8) * im.length)); im.forEach((x, j) => x.style.opacity = j === k ? 1 : 0); }
+    });
+  }
+  const g = groups.find(g => t >= g[0].s - 0.05 && t < g[g.length - 1].e + 0.35 && !(groups[groups.indexOf(g) + 1] && t >= groups[groups.indexOf(g) + 1][0].s - 0.05));
+  document.getElementById('cap').innerHTML = g ? g.map(w => `<span class="${t >= w.s && t < w.e + 0.05 ? 'on' : ''}">${w.w.replace(/[.,!?:]/g, '')}</span>`).join(' ') : '';
+}
+window.setTime = setTime; setTime(0);
+</script></body></html>

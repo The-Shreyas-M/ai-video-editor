@@ -35,7 +35,7 @@ Then restart Claude Code once and type `/ai-video`.
 3. Claude delegates the edit and shows files in `Exports/`. Watch them, give notes one at a time, say **approved**.
 4. Claude asks **which accounts** and **when**, shows a dry run, and posts or schedules only after you say go.
 
-Details: [docs/USAGE.md](docs/USAGE.md) · architecture and token design: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · posting setup (YouTube login, accounts, CSV): [docs/POSTING.md](docs/POSTING.md) · skill cheat sheet: [SKILL-LIST.txt](SKILL-LIST.txt) · for AI agents: [AGENTS.md](AGENTS.md).
+Details: [docs/USAGE.md](docs/USAGE.md) · architecture and token design: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · own-voice narration: [docs/VOICE.md](docs/VOICE.md) · posting setup (YouTube login, accounts, CSV): [docs/POSTING.md](docs/POSTING.md) · skill cheat sheet: [SKILL-LIST.txt](SKILL-LIST.txt) · for AI agents: [AGENTS.md](AGENTS.md).
 
 ## Requirements
 Python 3.10+, git, Node.js 22+, ffmpeg (full build with libass; Windows `winget install Gyan.FFmpeg`, macOS `brew install ffmpeg-full`), Claude Code. About 3 GB of disk (Whisper model, Chromium, npm packages). No paid API keys. A Google Cloud OAuth client (free) is needed only for YouTube posting.

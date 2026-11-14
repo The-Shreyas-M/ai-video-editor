@@ -26,3 +26,6 @@ you  ->  /ai-video (router, always listed, small)
 
 ## Extending
 Add a skill folder under `skills/`, list it in `SKILL-LIST.txt`, add a row to the router table in `skills/ai-video/SKILL.md`, re-run `python install.py`.
+
+## Known limitation
+`claude-animation-skills` was written for macOS/Linux. On Windows the installer adds a `python3` shim and uses Git Bash; its Playwright-Chromium download can stall on slow networks (the installer now times out after 25 min and can simply be re-run). The faceless engines (`stick-figure`, `zach-d-films`, `graph`, ...) were installed but NOT render-tested on Windows by the author of this repo; the demo video was rendered with the pipeline in `examples/promo` (system Chrome + ffmpeg) instead. `brag-slim` needs no extra install.
